@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Permanent Marker', cursive;
+}
+
+body {
+    background: url('img/background.png') no-repeat center top;
+    background-size: cover;
+    min-height: 100vh;
+    padding: 40px 80px;
+    line-height: 1.4;
+}
+/* Notebook lines overlay */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(#e5e5e5 1px, transparent 1px);
+    background-size: 100% 28px;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.7; /* Make lines slightly transparent to let background show through */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    position: relative;
+    z-index: 1; /* Place content above the lines */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 2.8rem;
+    color: #333;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+
+.pink-line {
+    height: 4px;
+    background-color: #ff6b6b;
+    width: 100%;
+    margin-top: 5px;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
+}
+
+.content-area {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.left-section {
+    width: 55%;
+    padding-right: 20px;
+}
+
+.blue-text {
+    color: #0066cc;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.question {
+    font-size: 2.2rem;
+    color: #000;
+    margin: 25px 0;
+    text-align: center;
+}
+
+.small {
+    font-size: 1.2rem;
+}
+.email-form {
+    display: flex;
+    flex-wrap: wrap; /* PERMITE QUE PASEN A LA SIGUIENTE LÍNEA */
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+input[type="email"] {
+    flex: 2;
+    padding: 16px 24px; /* more padding */
+    border: 1px solid #999;
+    border-radius: 30px 0 0 30px;
+    font-size: 1rem;
+}
+
+.red-button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+.right-section {
+    width: 45%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.character-img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+}
+
+.countdown-box {
+    background-color: #fff;
+    border: 3px solid #000;
+    border-radius: 30px;
+    padding: 40px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.countdown-content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.pencil-section {
+    width: 20%;
+    max-width: 150px;
+    margin-right: 30px;
+}
+
+.pencil-img {
+    width: 100%;
+    height: auto;
+}
+
+.text-section {
+    flex: 1;
+}
+
+.countdown-timer {
+    color: #ff6b6b;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.knowledge-text {
+    color: #0a4b70;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.notice-section {
+    display: flex;
+    align-items: center;
+}
+
+.notice-text {
+    color: #0066cc;
+    font-size: 1.3rem;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.arrow-img {
+    width: 100px;
+    height: auto;
+    margin-right: 30px;
+}
+
+.access-button {
+    background-color: white;
+    color: #ff6b6b;
+    border: 2px solid #ff6b6b;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.access-button:hover {
+    background-color: #fff5f5;
+}
+
+@media (max-width: 992px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .content-area {
+        flex-direction: column;
+    }
+    
+    .left-section, .right-section {
+        width: 100%;
+    }
+    
+    .right-section {
+        justify-content: center;
+        margin-top: 30px;
+    }
+    
+    .countdown-content {
+        flex-direction: column;
+    }
+    
+    .pencil-section {
+        width: 100px;
+        margin: 0 auto 20px;
+    }
+    
+    .knowledge-text, .countdown-timer {
+        font-size: 1.8rem;
+    }
+    
+    .notice-section {
+        flex-direction: column;
+    }
+    
+    .notice-text {
+        max-width: 100%;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    .spacer {
+        display: none;
+    }
+    
+    .arrow-img {
+        transform: rotate(90deg);
+        margin: 10px 0;
+    }
+    
+    .access-button {
+        margin-top: 10px;
+    }
+}
