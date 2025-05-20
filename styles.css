@@ -330,7 +330,7 @@ input[type="email"]::placeholder {
     
     .arrow-img {
         transform: rotate(90deg); /* Rotate arrow to point down */
-        margin: 10px 0;
+        margin: 5px 0;
     }
     
     .access-button {
