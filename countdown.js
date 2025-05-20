@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Set the countdown to end on May 26, 2025
-    const countDownDate = new Date("May 26, 2025 00:00:00").getTime();
+    // Set the countdown to end on May 28, 2025
+    const countDownDate = new Date("May 28, 2025 09:30:00").getTime();
     
     function updateCountdown() {
         const now = new Date().getTime();
