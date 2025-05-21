@@ -6,7 +6,6 @@
   <title>Examen Filtrado</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX67YDNFBX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -40,11 +39,11 @@
         <p class="question">¿LO QUIERES?</p>
         <p class="blue-text small">DÉJANOS TU CORREO Y TE AVISAMOS EN CUANTO LO PUBLIQUEMOS.</p>
 
-        <!-- ✅ FORMULARIO -->
+        
         <form id="email-form">
           <input type="email" name="email" required placeholder="Escribe tu correo aquí :) " />
 
-          <!-- 🛡️ CAMPO HONEYPOT (invisible para humanos) -->
+          
           <input type="text" name="nombre" style="display:none;" autocomplete="off" />
 
           <button class="red-button" type="submit">Quiero el spoiler</button>
@@ -79,7 +78,7 @@
     </div>
   </div>
 
-<!-- ✅ SCRIPT PARA ENVIAR A GOOGLE SHEETS -->
+
 <script>
   document
     .getElementById("email-form")
@@ -126,7 +125,7 @@
         });
     });
 
-  // Simple email validation
+  
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
