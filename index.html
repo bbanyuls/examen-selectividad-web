@@ -33,10 +33,10 @@
 
     <div class="content-area">
       <div class="left-section">
-        <p class="blue-text">YA SABEMOS LO QUE VA A CAER EN SELECTIVIDAD.</p>
+        <p class="blue-text">YA SABEMOS COMO VA A SER LA SELECTIVIDAD.</p>
         <p class="blue-text">(Y TÚ TAMBIÉN PUEDES SABERLO...)</p>
 
-        <p class="question">¿LO QUIERES?</p>
+        <p class="question">¿QUIERES AVERIGUAR QUÉ ES?</p>
         <p class="blue-text small">DÉJANOS TU CORREO Y TE AVISAMOS EN CUANTO LO PUBLIQUEMOS.</p>
 
         
@@ -68,7 +68,7 @@
           <p class="knowledge-text">EL CONOCIMIENTO LLEGA A QUIENES SABEN ESPERAR Y TRABAJAR...</p>
 
           <div class="notice-section">
-            <p class="notice-text">AQUÍ PONDREMOS LA INFO... (PERO AÚN NO.)</p>
+            <p class="notice-text">PODRÄS ACCEDER EN EL BOTÓN DE AQUÍ (PERO AÚN NO)</p>
             <span class="spacer"></span>
             <img src="img/arrow.svg" alt="Red arrow" class="arrow-img" />
             <button id="access-btn" class="access-button" disabled>ACCEDER</button>
@@ -80,26 +80,36 @@
 
 
 <script>
+  let isSubmitting = false; // Flag to track submission state
+
   document
     .getElementById("email-form")
     .addEventListener("submit", function (e) {
       e.preventDefault();
 
+      if (isSubmitting) {
+        // If already submitting, do nothing
+        return;
+      }
+
       const form = e.target;
       const email = form.email.value;
-      const honeypot = form.nombre.value; // campo invisible
+      const honeypot = form.nombre.value;
+      const submitButton = document.getElementById("submit-button");
 
-      // 🛡️ Ignorar bots
       if (honeypot !== "") return;
 
-      // Trim the email
       const trimmedEmail = email.trim();
 
-      // Validate email format
       if (!isValidEmail(trimmedEmail)) {
         alert("Por favor, introduce un correo electrónico válido.");
         return;
       }
+
+      // Set the flag to true
+      isSubmitting = true;
+      submitButton.disabled = true;
+      submitButton.textContent = "Enviando...";
 
       fetch(
         "https://script.google.com/macros/s/AKfycbwkbAWnoaJydxOLBMxUnvmnLoTzZmGJKPgIrxNmMwCzqVsWWnLYSVg7y3P2htwE_I0nWA/exec",
@@ -122,10 +132,15 @@
         .catch((error) => {
           console.error("Error:", error);
           alert("Error de red. Inténtalo más tarde.");
+        })
+        .finally(() => {
+          // Reset the flag and re-enable the button
+          isSubmitting = false;
+          submitButton.disabled = false;
+          submitButton.textContent = "Quiero el spoiler";
         });
     });
 
-  
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
