@@ -80,36 +80,26 @@
 
 
 <script>
-  let isSubmitting = false; // Flag to track submission state
-
   document
     .getElementById("email-form")
     .addEventListener("submit", function (e) {
       e.preventDefault();
 
-      if (isSubmitting) {
-        // If already submitting, do nothing
-        return;
-      }
-
       const form = e.target;
       const email = form.email.value;
-      const honeypot = form.nombre.value;
-      const submitButton = document.getElementById("submit-button");
+      const honeypot = form.nombre.value; // campo invisible
 
+      // 🛡️ Ignorar bots
       if (honeypot !== "") return;
 
+      // Trim the email
       const trimmedEmail = email.trim();
 
+      // Validate email format
       if (!isValidEmail(trimmedEmail)) {
         alert("Por favor, introduce un correo electrónico válido.");
         return;
       }
-
-      // Set the flag to true
-      isSubmitting = true;
-      submitButton.disabled = true;
-      submitButton.textContent = "Enviando...";
 
       fetch(
         "https://script.google.com/macros/s/AKfycbwkbAWnoaJydxOLBMxUnvmnLoTzZmGJKPgIrxNmMwCzqVsWWnLYSVg7y3P2htwE_I0nWA/exec",
@@ -132,15 +122,10 @@
         .catch((error) => {
           console.error("Error:", error);
           alert("Error de red. Inténtalo más tarde.");
-        })
-        .finally(() => {
-          // Reset the flag and re-enable the button
-          isSubmitting = false;
-          submitButton.disabled = false;
-          submitButton.textContent = "Quiero el spoiler";
         });
     });
 
+  
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
